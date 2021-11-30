@@ -1,0 +1,11 @@
+Django
+gunicorn
+asgiref
+dj-database-url
+django-cors-headers
+django-heroku
+djangorestframework
+psycopg2
+pytz
+sqlparse
+whitenoise

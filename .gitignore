@@ -1,0 +1,7 @@
+venv
+WebApp/migrations/
+*.pyc
+staticfiles
+run.bat
+gitDoc.txt
+db.sqlite2
