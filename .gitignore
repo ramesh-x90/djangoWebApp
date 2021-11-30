@@ -1,5 +1,4 @@
 venv
-WebApp/migrations/
 *.pyc
 staticfiles
 run.bat
