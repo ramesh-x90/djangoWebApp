@@ -66,12 +66,9 @@ class PatientLogin(APIView):
                     if patient.values('Password')[0]['Password'] == pwd:
                         
                         token : PatientToken = None
-                        while True:
-                            try:
-                                token  ,created = PatientToken.objects.update_or_create(user=patient.first())
-                                break
-                            except Exception as e:
-                                print(e)
+                        
+                        token  ,created = PatientToken.objects.update_or_create(user=patient.first())
+
 
                         
                         return Response(
