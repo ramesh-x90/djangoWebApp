@@ -28,7 +28,7 @@ class Doctor(models.Model):
 
 
 class PatientToken(models.Model):
-    key = models.CharField( unique=True , max_length=50 )
+    key = models.CharField( unique=True , max_length=100 )
     user = models.OneToOneField(
         Patient,
         on_delete=models.CASCADE,
