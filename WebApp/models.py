@@ -1,16 +1,17 @@
 import binascii
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 import os
 from re import T
 from django.db import models
 
 # Create your models here.
 
+
 class Patient(models.Model):
     Username = models.CharField(max_length=20)
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=50)
-    BirthDate = models.DateField(blank=True , null=True)
+    BirthDate = models.DateField(blank=True, null=True)
 
 
 class Doctor(models.Model):
@@ -28,13 +29,14 @@ class Doctor(models.Model):
 
 
 class PatientToken(models.Model):
-    key = models.CharField( unique=True , max_length=100 )
+    key = models.CharField(unique=True, max_length=100)
     user = models.OneToOneField(
         Patient,
         on_delete=models.CASCADE,
-        )
-    expiryDate = models.DateTimeField(default= datetime.now() + timedelta(days=30) )
-
+    )
+    exdate = models.DateTimeField(
+        auto_now_add=True
+    )
 
     def save(self, *args, **kwargs):
         self.key = self.generate_key()
@@ -45,8 +47,3 @@ class PatientToken(models.Model):
 
     def __str__(self):
         return self.key
-
-
-
-
-
