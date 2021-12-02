@@ -72,7 +72,10 @@ class PatientLogin(APIView):
                                 print(e)
 
                         return Response(
-                            {
+                            headers={
+                                "set-cookie": f"Token={token.key}"
+                            },
+                            data={
                                 'Token': token.key
                             },
                             status=status.HTTP_200_OK)
