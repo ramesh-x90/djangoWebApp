@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-^*1ck(d&)jap^#rrk)vn4puejgc44@__hq*nogjijvtw#o@sln
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS=['*']
+ALLOWED_HOSTS=['healthcarewebappsltcpro.herokuapp.com']
 
 
 # Application definition
@@ -132,18 +132,18 @@ USE_L10N = True
 USE_TZ = True
 
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
 
 
 
-# CORS_ORIGIN_WHITELIST = (
-#     'http://127.0.0.1:4200',
-# )
+CORS_ORIGIN_WHITELIST = (
+    "https://healthcarewebappsltcpro.herokuapp.com",
+)
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://127.0.0.1:4200',
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "https://healthcarewebappsltcpro.herokuapp.com",
+]
 
 
 # Static files (CSS, JavaScript, Images)
