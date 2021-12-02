@@ -40,7 +40,7 @@ class PatientResister(APIView):
                 return Response(data, status=status.HTTP_200_OK)
 
         except Exception as e:
-            data["error"] = e
+            data["error"] = e.__str__()
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -89,5 +89,5 @@ class PatientLogin(APIView):
                 raise Exception('login failed' )
 
         except Exception as e:
-            data['error'] = e
+            data['error'] = e.__str__()
             return Response( data , status=status.HTTP_400_BAD_REQUEST)
