@@ -144,11 +144,11 @@ SECURE_SSL_REDIRECT = True
 
 
 CORS_ORIGIN_WHITELIST = (
-    "https://.healthcarewebappsltcpro.herokuapp.com",
+    "https://healthcarewebappsltcpro.herokuapp.com",
 )
 
 CORS_ALLOWED_ORIGINS = [
-    "https://.healthcarewebappsltcpro.herokuapp.com",
+    "https://healthcarewebappsltcpro.herokuapp.com",
 ]
 
 
