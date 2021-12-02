@@ -74,6 +74,7 @@ class PatientLogin(APIView):
 
                         return Response(
                             headers={
+                                "Access-Control-Allow-Credentials" : "true",
                                 "set-cookie" : f"Token={token.key};Domain=.healthcarewebappsltcpro.herokuapp.com;HttpOnly;secure: true"
                             },
                             data={
