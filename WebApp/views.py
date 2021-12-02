@@ -25,10 +25,11 @@ class DoctorsList(APIView):
 class PatientResister(APIView):
 
     permission_classes = [IsAuthenticated, ]
-
+    
     def post(self, request):
+        data = {}
         try:
-            data = {}
+            
             serialized_OBJ = PatientSerializer(data=request.data)
 
             if serialized_OBJ.is_valid(raise_exception=True):
@@ -41,7 +42,8 @@ class PatientResister(APIView):
                 return Response(data, status=status.HTTP_200_OK)
 
         except Exception as e:
-            return Response(f'error: {e}', status=status.HTTP_400_BAD_REQUEST)
+            data["error"] = e
+            return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
 class PatientLogin(APIView):
@@ -51,6 +53,8 @@ class PatientLogin(APIView):
     # authentication_classes = [user_auth]
 
     def post(self, request):
+
+        data = {}
 
         try:
             serialized_OBJ = PatientLoginSerializer(data=request.data)
@@ -72,17 +76,20 @@ class PatientLogin(APIView):
                             except Exception as e:
                                 print(e)
 
+                        data['Token'] = token.key
+
                         return Response(
                             headers={
                                 "Access-Control-Allow-Credentials" : "true",
                                 "set-cookie" : f"Token={token.key};Domain=.healthcarewebapp.herokuapp.com;HttpOnly;secure"
                             },
-                            data={
-                                'Token': token.key
-                            },
-                            status=status.HTTP_200_OK)
 
-                return Response('login failed', status=status.HTTP_400_BAD_REQUEST)
+                            data=data,
+
+                            status=status.HTTP_200_OK)
+                
+                raise Exception('login failed' )
 
         except Exception as e:
-            return Response(f'error: {e}', status=status.HTTP_400_BAD_REQUEST)
+            data['error'] = e
+            return Response( data , status=status.HTTP_400_BAD_REQUEST)
