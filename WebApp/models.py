@@ -19,7 +19,7 @@ class Patient(models.Model):
 
 class Doctor(models.Model):
     doctorname = models.CharField(max_length=20,validators=[alphanumeric])
-    email = models.EmailField(max_length=100 ,validators=[alphanumeric])
+    email = models.EmailField(max_length=100 ,validators=[alphanumeric] , unique=True)
     password = models.CharField(max_length=100,validators=[alphanumeric])
     hospitalname = models.CharField(max_length=50,validators=[alphanumeric])
     specialization = models.CharField(max_length=100,validators=[alphanumeric])
