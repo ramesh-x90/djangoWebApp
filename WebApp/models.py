@@ -12,7 +12,7 @@ alphanumeric = RegexValidator(r"^[\w#\-_\+\.\(\)@~\\/*!&]+$" , message= "Contain
 
 class Patient(models.Model):
     Username = models.CharField(max_length=20 , validators=[alphanumeric])
-    Email = models.EmailField(max_length=100)
+    Email = models.EmailField(max_length=100 , unique=True)
     Password = models.CharField(max_length=50 , validators=[alphanumeric])
     BirthDate = models.DateField(blank=True , null=True)
 
