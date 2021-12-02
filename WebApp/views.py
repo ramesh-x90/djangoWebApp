@@ -35,7 +35,7 @@ class PatientResister(APIView):
 
                 email = serialized_OBJ.validated_data.get('Email')
                 if Patient.objects.filter(Email=email).exists():
-                    raise('email already exists')
+                    raise Exception('email already exists')
                 serialized_OBJ.save()
                 data["message"] = "Patient registered successfully"
                 return Response(data, status=status.HTTP_200_OK)
