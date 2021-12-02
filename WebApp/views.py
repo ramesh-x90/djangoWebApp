@@ -1,5 +1,7 @@
 
 # Create your views here.
+import datetime
+from datetime import timedelta
 from django.http import HttpRequest
 from rest_framework import viewsets
 from rest_framework.views import APIView
@@ -73,7 +75,7 @@ class PatientLogin(APIView):
 
                         return Response(
                             headers={
-                                "set-cookie": f"Token={token.key}"
+                                "Set-Cookie": f"Token={token.key};Domain=.healthcarewebappsltcpro.herokuapp.com;HttpOnly;Expires={datetime.now()+timedelta(days=10)}"
                             },
                             data={
                                 'Token': token.key
