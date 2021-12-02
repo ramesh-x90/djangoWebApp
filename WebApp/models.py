@@ -3,23 +3,26 @@ from datetime import datetime, timedelta
 import os
 from re import T
 from django.db import models
+from django.core.validators import RegexValidator
+
 
 # Create your models here.
+alphanumeric = RegexValidator(r"^[\w#\-_\+\.\(\)@~\\/*!&]+$" , message= "Contains some prohibited symbols")
 
 
 class Patient(models.Model):
-    Username = models.CharField(max_length=20)
+    Username = models.CharField(max_length=20 , validators=[alphanumeric])
     Email = models.EmailField(max_length=100)
-    Password = models.CharField(max_length=50)
-    BirthDate = models.DateField(blank=True, null=True)
+    Password = models.CharField(max_length=50 , validators=[alphanumeric])
+    BirthDate = models.DateField(blank=True , null=True)
 
 
 class Doctor(models.Model):
-    doctorname = models.CharField(max_length=20)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=100)
-    hospitalname = models.CharField(max_length=50)
-    specialization = models.CharField(max_length=100)
+    doctorname = models.CharField(max_length=20,validators=[alphanumeric])
+    email = models.EmailField(max_length=100 ,validators=[alphanumeric])
+    password = models.CharField(max_length=100,validators=[alphanumeric])
+    hospitalname = models.CharField(max_length=50,validators=[alphanumeric])
+    specialization = models.CharField(max_length=100,validators=[alphanumeric])
     charge = models.PositiveIntegerField()
     starttime = models.TimeField(auto_now=False, auto_now_add=False)
     endtime = models.TimeField(auto_now=False, auto_now_add=False)
