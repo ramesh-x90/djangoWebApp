@@ -23,6 +23,7 @@ class PatientLoginSerializer(serializers.ModelSerializer):
 
         extra_kwargs = {
             'Password' : {"write_only": True},
+            'Email' : {"validators": []},
 
         }
 
