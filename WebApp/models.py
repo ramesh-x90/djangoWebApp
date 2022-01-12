@@ -7,22 +7,25 @@ from django.core.validators import RegexValidator
 
 
 # Create your models here.
-alphanumeric = RegexValidator(r"^[\w#\-_\+\.\(\)@~\\/*!&]+$" , message= "Contains some prohibited symbols")
+alphanumeric = RegexValidator(
+    r"^[\w#\ -_\+\.\(\)@~\\/*!&]+$", message="Contains some prohibited symbols")
 
 
 class Patient(models.Model):
-    Username = models.CharField(max_length=20 , validators=[alphanumeric])
-    Email = models.EmailField(max_length=100 , unique=True)
-    Password = models.CharField(max_length=50 , validators=[alphanumeric])
-    BirthDate = models.DateField(blank=True , null=True)
+    Username = models.CharField(max_length=20, validators=[alphanumeric])
+    Email = models.EmailField(max_length=100, unique=True)
+    Password = models.CharField(max_length=50, validators=[alphanumeric])
+    BirthDate = models.DateField(blank=True, null=True)
 
 
 class Doctor(models.Model):
-    doctorname = models.CharField(max_length=20,validators=[alphanumeric])
-    email = models.EmailField(max_length=100 ,validators=[alphanumeric] , unique=True)
-    password = models.CharField(max_length=100,validators=[alphanumeric])
-    hospitalname = models.CharField(max_length=50,validators=[alphanumeric])
-    specialization = models.CharField(max_length=100,validators=[alphanumeric])
+    doctorname = models.CharField(max_length=20, validators=[alphanumeric])
+    email = models.EmailField(max_length=100, validators=[
+                              alphanumeric], unique=True)
+    password = models.CharField(max_length=100, validators=[alphanumeric])
+    hospitalname = models.CharField(max_length=50, validators=[alphanumeric])
+    specialization = models.CharField(
+        max_length=100, validators=[alphanumeric])
     charge = models.PositiveIntegerField()
     starttime = models.TimeField(auto_now=False, auto_now_add=False)
     endtime = models.TimeField(auto_now=False, auto_now_add=False)
