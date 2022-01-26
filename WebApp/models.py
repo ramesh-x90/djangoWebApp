@@ -8,7 +8,7 @@ from django.core.validators import RegexValidator
 
 # Create your models here.
 alphanumeric = RegexValidator(
-    r"^[\w#\ -_\+\.\(\)@~\\/*!&]+$", message="Contains some prohibited symbols")
+    r"^[\w]+$", message="Contains some prohibited symbols")
 
 
 class Patient(models.Model):
